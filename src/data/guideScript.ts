@@ -2,13 +2,15 @@ import type { Page } from '../router'
 
 export const GUIDE_LINES: Record<Page, string> = {
   spawn:
-    "Hey, welcome! I'm the guide around here. This world is Satriyo's portfolio — press 1-6 or use the hotbar to travel, and try clicking the blocks around you. Ready for the tour?",
+    "Hey, welcome traveler! I'm your guide in Satriyo's world. Press 1-6 or click the hotbar to teleport, mine the voxel blocks around you, and explore battle-tested systems built for scale. Ready for the tour?",
   pipeline:
-    'This is the redstone line: follow one message from a phone all the way to the browser. It arrives in under 200 milliseconds — hover the stations to see each stage.',
+    'The redstone telemetry line! Trace a single packet from mobile edge through Go gateways, Kafka queues, worker pods, and WebSockets to the browser in <200ms. Hover each station to inspect the mechanics.',
   quests:
-    'The quest log! Ten shipped systems across backend, AI orchestration, frontend, and platform. Click any card to read the full story behind it.',
-  skills: 'The skill tree — every language, framework, and tool used to complete those quests.',
-  lore: 'A bit of lore: how Satriyo thinks about building software. Short read, worth it.',
+    'The quest log! Shipped production beasts: autonomous multi-agent AI orchestrators, 5k msg/s messaging engines, and zero-downtime K8s platforms. Tap any quest card to inspect architectural deep-dives.',
+  skills:
+    'The master skill tree! Every weapon in the arsenal: Go, TypeScript, Kubernetes, Kafka, Redis, and React. Graded from battle-hardened core proficiencies to cutting-edge AI toolchains.',
+  lore:
+    "The engineering grimoire: Satriyo's architectural philosophy. Idempotent pipelines, graceful failure modes, zero magic, and systems that won't page you at 3 AM. Essential reading for architects.",
   contact:
-    "That's the whole tour! If you want him on your server, send a message — the address is right here.",
+    "Direct comms beacon reached! Dispatch an email, copy coordinates, or ping Satriyo's GitHub to recruit him for your server. Let's forge high-throughput infrastructure together!",
 }

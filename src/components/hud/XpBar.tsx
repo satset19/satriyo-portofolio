@@ -28,14 +28,14 @@ export function XpBar({ page }: { page: Page }) {
   const level = PAGES.indexOf(page) + 1
 
   return (
-    <div className="flex w-full items-center gap-2" aria-hidden>
-      <div className="mc-slot h-3 flex-1 overflow-hidden">
+    <div className="flex w-full items-center gap-1.5 px-0.5 min-[360px]:gap-2 min-[360px]:px-0" aria-hidden>
+      <div className="mc-slot h-2.5 flex-1 overflow-hidden min-[360px]:h-3">
         <div
           className="h-full bg-xp transition-[width] duration-150 ease-out"
           style={{ width: `${progress * 100}%` }}
         />
       </div>
-      <span className="pixel-text text-[10px] text-xp" style={{ textShadow: '1px 1px 0 #000' }}>
+      <span className="pixel-text shrink-0 text-[9px] text-xp min-[360px]:text-[10px]" style={{ textShadow: '1px 1px 0 #000' }}>
         Lv.{level}
       </span>
     </div>

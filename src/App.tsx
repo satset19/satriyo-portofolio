@@ -70,7 +70,7 @@ export default function App() {
       <HudToggles />
       <AchievementToast page={page} />
       <GuideCharacter page={page} />
-      <div className="fixed bottom-3 left-1/2 z-20 flex w-[min(92vw,420px)] -translate-x-1/2 flex-col items-center gap-1.5">
+      <div className="fixed bottom-2.5 min-[360px]:bottom-3 left-1/2 z-20 flex w-[min(94vw,420px)] -translate-x-1/2 flex-col items-center gap-1 min-[360px]:gap-1.5">
         <XpBar page={page} />
         <Hotbar />
       </div>
