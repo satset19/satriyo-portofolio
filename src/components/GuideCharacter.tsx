@@ -93,9 +93,9 @@ export function GuideCharacter({ page }: { page: Page }) {
   const next = nextIndex < PAGES.length ? PAGES[nextIndex] : null
 
   return (
-    <div className="fixed bottom-24 left-2 z-30 flex max-w-[280px] origin-bottom-left scale-90 flex-col items-start gap-2 sm:bottom-5 sm:left-5 sm:scale-100">
+    <div className="pointer-events-none fixed bottom-32 left-2 z-30 flex max-w-[min(280px,calc(100vw-1rem))] flex-col items-start gap-2 sm:bottom-5 sm:left-5 sm:scale-100 [&>*]:pointer-events-auto">
       {open && (
-        <div className="mc-tooltip toast-in relative p-4">
+        <div role="region" aria-label="Guide" className="mc-tooltip toast-in relative p-4 pr-10">
           <button
             type="button"
             onClick={() => {
@@ -103,18 +103,18 @@ export function GuideCharacter({ page }: { page: Page }) {
               setOpen(false)
             }}
             aria-label="Dismiss guide"
-            className="absolute top-1.5 right-1.5 cursor-pointer text-slate-400 hover:text-text"
+            className="absolute top-0 right-0 flex h-11 w-11 cursor-pointer items-center justify-center text-slate-300 hover:text-text"
           >
-            <X size={14} aria-hidden />
+            <X size={16} aria-hidden />
           </button>
-          <p aria-live="polite" className="min-h-16 pr-4 text-lg leading-snug text-slate-200">
+          <p aria-live="polite" className="min-h-16 text-lg leading-snug text-slate-200">
             {line.slice(0, chars)}
             {chars < line.length && <span aria-hidden>▌</span>}
           </p>
           <button
             type="button"
             onClick={() => goTo(next ?? 'spawn')}
-            className="mc-btn mc-btn-green mt-3 px-3 py-2 text-[8px] focus-visible:outline-3 focus-visible:outline-xp"
+            className="mc-btn mc-btn-green mt-3 min-h-11 px-3 py-2 text-[9px]"
           >
             {next ? 'Next ➜' : 'Restart tour'}
           </button>
@@ -133,7 +133,7 @@ export function GuideCharacter({ page }: { page: Page }) {
         }}
         aria-label={open ? 'Hide guide' : 'Talk to the guide'}
         aria-expanded={open}
-        className={`cursor-pointer focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-xp ${
+        className={`cursor-pointer focus-visible:outline-offset-4 ${
           reducedMotion ? '' : 'guide-bob'
         }`}
       >

@@ -35,6 +35,43 @@ a,
     pointer;
 }
 
+/* Visible keyboard focus on every interactive element (3px XP-green ring,
+   offset so it sits on the dark page, >= 14:1 against it). */
+@layer base {
+  :where(a, button, summary, input, select, textarea, [role='button'], [role='tab'], [tabindex]:not([tabindex='-1'])):focus-visible {
+    outline: 3px solid var(--color-xp);
+    outline-offset: 2px;
+  }
+}
+
+/* Interactive card: hover lift ring + press-in, shared by project cards and
+   any clickable tile so every card behaves the same. */
+@layer components {
+  .mc-card-interactive {
+    transition:
+      outline-color 100ms ease-out,
+      transform 100ms ease-out;
+    outline: 2px solid transparent;
+    outline-offset: 0;
+  }
+  .mc-card-interactive:hover {
+    outline-color: rgb(255 255 255 / 0.7);
+  }
+  .mc-card-interactive:active {
+    transform: translateY(1px);
+  }
+  .mc-card-interactive:focus-visible {
+    outline: 3px solid var(--color-xp);
+    outline-offset: 2px;
+  }
+}
+
+/* Focus ring for SVG stage nodes (outline is unreliable on <g>) */
+.arch-node:focus-visible .arch-node-box {
+  stroke: #ffffff;
+  stroke-width: 4;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -60,10 +97,11 @@ body {
     inset -3px -3px 0 rgb(0 0 0 / 0.5);
 }
 
-/* Classic stone button: raised bevel, presses in on :active */
+/* Classic stone button: raised bevel, presses in on :active.
+   Gradient is dark enough that white label text clears WCAG AA (>= 5:1). */
 .mc-btn {
   font-family: var(--font-pixel);
-  background: linear-gradient(#8b8b8b, #6f6f6f);
+  background: linear-gradient(#707070, #5a5a5a);
   color: #fff;
   text-shadow: 2px 2px 0 rgb(0 0 0 / 0.6);
   border: 2px solid #0a0a0a;
@@ -84,8 +122,23 @@ body {
   transform: translateY(1px);
 }
 
+.mc-btn:disabled,
+.mc-btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  filter: grayscale(0.6) brightness(0.8);
+  transform: none;
+}
+
+/* Green: white text >= 5.3:1 across the whole gradient */
 .mc-btn-green {
-  background: linear-gradient(#5ebb2b, #4a9622);
+  background: linear-gradient(#3a7a1a, #2f6a14);
+}
+
+/* Gold: dark text for contrast (gold background fails with white) */
+.mc-btn-yellow {
+  background: linear-gradient(#fcd34d, #e0b52f);
+  color: #111;
+  text-shadow: none;
 }
 
 /* Translucent panel so section text stays readable over the 3D world */

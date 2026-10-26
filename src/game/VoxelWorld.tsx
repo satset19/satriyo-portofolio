@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import type { ThreeEvent } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -488,7 +488,27 @@ function CameraRig() {
   return null
 }
 
-export default function VoxelWorld() {
+function subscribeVisibility(callback: () => void) {
+  document.addEventListener('visibilitychange', callback)
+  return () => document.removeEventListener('visibilitychange', callback)
+}
+
+// Stop the render loop entirely while the tab is in the background.
+function usePageVisible(): boolean {
+  return useSyncExternalStore(
+    subscribeVisibility,
+    () => document.visibilityState !== 'hidden',
+    () => true,
+  )
+}
+
+interface VoxelWorldProps {
+  /** Weak device: render at native CSS resolution and skip extra work. */
+  lowPower?: boolean
+}
+
+export default function VoxelWorld({ lowPower = false }: VoxelWorldProps) {
+  const visible = usePageVisible()
   const blocks = useMemo(() => generateTerrain(40), [])
   const byType = useMemo(() => {
     const groups = {} as Record<BlockType, Block[]>
@@ -503,8 +523,9 @@ export default function VoxelWorld() {
       className="!fixed inset-0"
       style={{ position: 'fixed', zIndex: 0 }}
       camera={{ position: [32, 17, 32], fov: 42 }}
-      dpr={[1, 1.5]}
-      gl={{ antialias: false }}
+      dpr={lowPower ? 1 : [1, 1.5]}
+      frameloop={visible ? 'always' : 'never'}
+      gl={{ antialias: false, powerPreference: lowPower ? 'low-power' : 'default' }}
       onCreated={({ clock }) => {
         clockRef.current = clock
       }}

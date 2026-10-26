@@ -29,7 +29,13 @@ export function ProjectGrid() {
     <div ref={ref}>
       <FilterTabs active={filter} onChange={setFilter} />
       {/* key={filter} remounts the grid so cards replay their staggered entrance */}
-      <div key={filter} className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {visible.length === 0 ? (
+        <div role="status" className="mc-slot mt-8 px-5 py-10 text-center">
+          <p className="pixel-text text-[10px] text-gold">No quests here yet</p>
+          <p className="mt-3 text-xl text-slate-300">Nothing in this category. Try another filter.</p>
+        </div>
+      ) : (
+      <div key={filter} className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {visible.map((project, index) => (
           <ProjectCard
             key={project.id}
@@ -40,6 +46,7 @@ export function ProjectGrid() {
           />
         ))}
       </div>
+      )}
       <ProjectDialog project={selected} onClose={closeProject} />
     </div>
   )

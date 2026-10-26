@@ -11,7 +11,7 @@ export function PipelinePage() {
     <Section
       id="pipeline"
       kicker="Distributed architecture & multi-agent execution"
-      title="How packets travel & agents reason — real-time topologies"
+      title="How packets travel & agents reason: real-time topologies"
     >
       <div className="space-y-6">
         {/* Multi-Topology Visualizer */}

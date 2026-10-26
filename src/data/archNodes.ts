@@ -46,9 +46,9 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
     id: 'cdc',
     label: 'Realtime CDC Event Pipeline',
     shortLabel: 'CDC Pipeline',
-    railTitle: 'Redstone Rail — WAL to WebSocket in <200ms',
+    railTitle: 'Redstone Rail: WAL to WebSocket in <200ms',
     summary:
-      'High-throughput change data capture streaming PostgreSQL WAL events to connected browsers with exactly-once Redis dedup and subject-based tenant isolation.',
+      'Change data capture that streams PostgreSQL WAL events to connected browsers, with exactly-once Redis dedup and subject-based tenant isolation.',
     railColor: '#ff5533',
     railTrackColor: '#6b4a2b',
     pulseColor: '#ff5533',
@@ -91,7 +91,7 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: GitBranch,
         metric: '5k msg/s',
         blurb:
-          'Database commits become change events — deduplicated exactly-once and enriched with routing metadata.',
+          'Database commits become change events, deduplicated exactly once and enriched with routing metadata.',
       },
       {
         id: 'realtime',
@@ -99,7 +99,7 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: Radio,
         metric: 'Route Reg',
         blurb:
-          'Routes each event to the right browser across pods via a route registry — WebSocket all the way.',
+          'A route registry sends each event to the right browser, whichever pod holds its WebSocket.',
       },
       {
         id: 'browser',
@@ -115,9 +115,9 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
     id: 'gateway',
     label: 'Multi-Tenant WebSocket Gateway & Route Registry',
     shortLabel: 'WebSocket Gateway',
-    railTitle: 'Lapis Lazuli Bus — Zero-Drop Cross-Pod Mesh',
+    railTitle: 'Lapis Lazuli Bus: Cross-Pod Delivery Mesh',
     summary:
-      'Distributed Go WebSocket cluster with Redis route registry, gRPC circuit-broken cross-pod forwarding, and exclusive sessions guarded by distributed locks.',
+      'Go WebSocket cluster with a Redis route registry, gRPC cross-pod forwarding behind a circuit breaker, and one session per user enforced by distributed locks.',
     railColor: '#00e5ff',
     railTrackColor: '#1e293b',
     pulseColor: '#00e5ff',
@@ -129,7 +129,7 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: Smartphone,
         metric: 'TLS 1.3',
         blurb:
-          'Browser or mobile client opens a persistent TLS WebSocket connection with AES-GCM bearer auth token.',
+          'A browser or mobile client opens a persistent TLS WebSocket, authenticated with an AES-GCM bearer token.',
       },
       {
         id: 'ingress',
@@ -137,21 +137,21 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: ShieldCheck,
         metric: 'Envoy L7',
         blurb:
-          'Kubernetes ingress terminates TLS, verifies cryptographic tenant bearer claims, and balances pod connections.',
+          'Kubernetes ingress terminates TLS, checks the tenant bearer token, and balances connections across pods.',
       },
       {
         id: 'gw-pod',
         label: 'Gateway Pod',
         icon: Cpu,
-        metric: 'Go Coroutines',
+        metric: 'Goroutines',
         blurb:
-          'Dedicated Go WebSocket daemon enforces backpressure, buffered frame writes, and adaptive ping/pong keepalives.',
+          'Go WebSocket server with backpressure, buffered frame writes, and adaptive ping/pong keepalives.',
       },
       {
         id: 'route-reg',
         label: 'Route Registry',
         icon: Waypoints,
-        metric: 'Redis Key-Val',
+        metric: 'Redis KV',
         blurb:
           'Records active socket-to-pod mappings in Redis with adaptive TTLs and exclusive distributed locks.',
       },
@@ -161,7 +161,7 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: Radio,
         metric: 'Pub/Sub Stream',
         blurb:
-          'Distributes tenant event broadcasts across all pods in the cluster with zero-drop fanout guarantees.',
+          'Fans tenant broadcasts out to every pod in the cluster.',
       },
       {
         id: 'grpc-mesh',
@@ -177,7 +177,7 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: MonitorSmartphone,
         metric: '<50ms P99',
         blurb:
-          'Agent workstation UI receives framed events with guaranteed delivery order and sub-50ms handoff.',
+          'The agent desk UI receives events in order, with sub-50ms handoff at P99.',
       },
     ],
   },
@@ -185,9 +185,9 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
     id: 'multiagent',
     label: 'Autonomous Multi-Agent AI Orchestrator Loop',
     shortLabel: 'Multi-Agent Loop',
-    railTitle: 'Amethyst Telemetry Loop — Autonomous Subagent DAG',
+    railTitle: 'Amethyst Telemetry Loop: Parallel Subagent DAG',
     summary:
-      'Distributed multi-agent execution runtime orchestrating up to 10 parallel subagents with sandboxed tool execution, Graphify codebase context, and live WebSocket telemetry.',
+      'Multi-agent runtime that runs up to 10 parallel subagents with sandboxed tools, Graphify codebase context, and live WebSocket telemetry.',
     railColor: '#c084fc',
     railTrackColor: '#4a1d96',
     pulseColor: '#c084fc',
@@ -199,7 +199,7 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: Terminal,
         metric: 'Intent DAG',
         blurb:
-          'Ingests high-level user prompt or PR trigger, decomposing requirements into a dependency graph of sub-tasks.',
+          'Takes a user prompt or PR trigger and breaks it into a dependency graph of sub-tasks.',
       },
       {
         id: 'orchestrator',
@@ -207,7 +207,7 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: Bot,
         metric: 'Hermes Core',
         blurb:
-          'Lead state machine orchestrator (Hermes Agent) plans parallel execution streams, delegates roles, and monitors progress.',
+          'The lead orchestrator (Hermes Agent) plans parallel work, assigns roles, and tracks progress.',
       },
       {
         id: 'subagents',
@@ -215,7 +215,7 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: Layers,
         metric: 'Up to 10 Workers',
         blurb:
-          'Spawns specialized worker subagents (Architect, Coder, Reviewer) running concurrent execution loops.',
+          'Starts specialized subagents (Architect, Coder, Reviewer) that run concurrently.',
       },
       {
         id: 'sandbox',
@@ -223,15 +223,15 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: Wrench,
         metric: 'Policy Guard',
         blurb:
-          'Executes filesystem, terminal, and search tools under strict sandboxing, AST analysis, and dangerous command filters.',
+          'Runs filesystem, terminal, and search tools in a sandbox with AST checks and dangerous-command filters.',
       },
       {
         id: 'eval-gate',
         label: 'Eval Gate',
         icon: CheckCircle2,
-        metric: 'TDD & Oxlint',
+        metric: 'TDD + Oxlint',
         blurb:
-          'Enforces quality gates before merge: Red-Green verification, Oxlint static analysis, and diff safety validation.',
+          'Quality gates before merge: red-green test checks, Oxlint static analysis, and diff safety validation.',
       },
       {
         id: 'knowledge',
@@ -239,15 +239,15 @@ export const ARCH_TOPOLOGIES: Record<ArchTopology, ArchTopologyConfig> = {
         icon: Network,
         metric: 'Graphify Knowledge',
         blurb:
-          'Leverages Graphify knowledge graph and vector context for cross-file architecture navigation and semantic indexing.',
+          'Uses the Graphify knowledge graph and vector context to navigate architecture across files.',
       },
       {
         id: 'telemetry',
         label: 'Telemetry Stream',
         icon: Activity,
-        metric: 'Real-time Trace',
+        metric: 'Live Trace',
         blurb:
-          'Streams real-time tool calls, token usage counters, and subagent state transitions over WebSocket to client UI.',
+          'Streams tool calls, token usage, and subagent state changes over WebSocket to the UI.',
       },
     ],
   },

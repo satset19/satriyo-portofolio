@@ -76,8 +76,8 @@ export function ArchitectureFlow({
                 aria-controls={`panel-${key}`}
                 type="button"
                 onClick={() => handleSelectTopology(key)}
-                className={`mc-btn px-3 py-2 text-[10px] tracking-wide transition-all focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-xp ${
-                  isSelected ? 'mc-btn-green shadow-inner' : 'hover:border-slate-500'
+                className={`mc-btn min-h-11 px-3 py-2 text-[10px] tracking-wide ${
+                  isSelected ? 'mc-btn-green' : ''
                 }`}
               >
                 {config.shortLabel}
@@ -89,13 +89,14 @@ export function ArchitectureFlow({
         {/* Rail subtitle info */}
         <div className="flex items-center gap-2">
           <span
-            className="inline-block h-2 w-2 rounded-full"
+            aria-hidden
+            className="inline-block h-2 w-2 shrink-0 rounded-full"
             style={{
               backgroundColor: currentTopology.pulseColor,
               boxShadow: `0 0 8px ${currentTopology.glowColor}`,
             }}
           />
-          <span className="font-mono text-xs text-slate-300">
+          <span className="text-lg leading-tight text-slate-300">
             {currentTopology.railTitle}
           </span>
         </div>
@@ -106,11 +107,51 @@ export function ArchitectureFlow({
         id={`panel-${currentTopologyKey}`}
         role="tabpanel"
         aria-labelledby={`tab-${currentTopologyKey}`}
-        className="mc-slot overflow-x-auto p-1"
       >
+        {/* Narrow screens: stacked stage list instead of a 1040px-wide rail */}
+        <ol aria-label={`${currentTopology.label} stages`} className="mc-slot space-y-1.5 p-2 lg:hidden">
+          {nodes.map((node, i) => {
+            const isActive = node.id === activeNodeId
+            const Icon = node.icon
+            return (
+              <li key={node.id}>
+                <button
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => {
+                    playClick()
+                    setActiveNodeId(node.id)
+                  }}
+                  className={`flex min-h-11 w-full items-center gap-3 border-2 px-3 py-2 text-left transition-colors ${
+                    isActive ? 'bg-[#2a2a30]' : 'border-transparent bg-black/30 hover:bg-black/50'
+                  }`}
+                  style={isActive ? { borderColor: currentTopology.pulseColor } : undefined}
+                >
+                  <span aria-hidden className="w-6 shrink-0 text-base text-slate-400">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <Icon
+                    size={18}
+                    aria-hidden
+                    className="shrink-0"
+                    color={isActive ? currentTopology.pulseColor : '#94a3b8'}
+                  />
+                  <span className={`flex-1 text-lg leading-tight ${isActive ? 'text-gold' : 'text-slate-200'}`}>
+                    {node.label}
+                  </span>
+                  {node.metric && (
+                    <span className="shrink-0 text-base text-slate-300">{node.metric}</span>
+                  )}
+                </button>
+              </li>
+            )
+          })}
+        </ol>
+
+        <div className="mc-slot hidden overflow-x-auto p-1 lg:block">
         <svg
           viewBox={`0 0 ${W} ${H}`}
-          className="min-w-[920px]"
+          className="w-full min-w-[820px]"
           role="group"
           aria-label={`${currentTopology.label}: Select a stage to view mechanics.`}
         >
@@ -202,7 +243,7 @@ export function ArchitectureFlow({
                     setActiveNodeId(node.id)
                   }
                 }}
-                className="cursor-pointer outline-none"
+                className="arch-node cursor-pointer outline-none"
               >
                 {/* Node Box */}
                 <rect
@@ -211,6 +252,7 @@ export function ArchitectureFlow({
                   width={NODE_W}
                   height={NODE_H}
                   rx="3"
+                  className="arch-node-box transition-all duration-200"
                   fill={isActive ? '#2a2a30' : '#18181b'}
                   stroke={isActive ? currentTopology.pulseColor : '#334155'}
                   strokeWidth={isActive ? 3 : 1.5}
@@ -221,7 +263,6 @@ export function ArchitectureFlow({
                         }
                       : undefined
                   }
-                  className="transition-all duration-200"
                 />
 
                 {/* Node Icon */}
@@ -251,8 +292,8 @@ export function ArchitectureFlow({
                   x={cx}
                   y={NODE_Y + 80}
                   textAnchor="middle"
-                  fill={isActive ? currentTopology.pulseColor : '#64748b'}
-                  fontSize="12"
+                  fill={isActive ? currentTopology.pulseColor : '#94a3b8'}
+                  fontSize="14"
                   fontFamily="'VT323', monospace"
                 >
                   {node.metric ? `[${node.metric}]` : `0${i + 1}`}
@@ -263,8 +304,8 @@ export function ArchitectureFlow({
                   x={cx + NODE_W / 2 - 8}
                   y={NODE_Y + 16}
                   textAnchor="end"
-                  fill="#475569"
-                  fontSize="11"
+                  fill="#94a3b8"
+                  fontSize="13"
                   fontFamily="'VT323', monospace"
                 >
                   #{i + 1}
@@ -273,10 +314,11 @@ export function ArchitectureFlow({
             )
           })}
         </svg>
+        </div>
       </div>
 
       {/* Detail Panel */}
-      <div aria-live="polite" className="mc-panel p-5">
+      <div aria-live="polite" className="mc-panel p-4 sm:p-5">
         <div key={`${currentTopologyKey}-${activeNode.id}`} className="fade-swap flex flex-col gap-4 sm:flex-row sm:items-center">
           <div
             className="mc-slot shrink-0 self-start p-3 sm:self-center"
@@ -292,20 +334,20 @@ export function ArchitectureFlow({
             <div className="flex flex-wrap items-center gap-2">
               <span className="pixel-text text-[11px] text-gold">{activeNode.label}</span>
               {activeNode.metric && (
-                <span className="rounded bg-black/40 px-2 py-0.5 font-mono text-[10px] text-emerald-400 border border-emerald-900/60">
+                <span className="border border-emerald-900/60 bg-black/40 px-2 py-0.5 text-base leading-tight text-emerald-400">
                   {activeNode.metric}
                 </span>
               )}
-              <span className="font-mono text-xs text-slate-500">
+              <span className="text-base leading-tight text-slate-400">
                 Stage {nodes.findIndex((n) => n.id === activeNode.id) + 1} of {nodes.length}
               </span>
             </div>
 
-            <p className="mt-1.5 text-base leading-snug text-slate-200">
+            <p className="mt-1.5 text-lg leading-snug text-slate-200">
               {activeNode.blurb}
             </p>
 
-            <p className="mt-2 text-xs text-slate-400 font-mono">
+            <p className="mt-2 text-base leading-snug text-slate-400">
               Topology Context: <span className="text-slate-300">{currentTopology.summary}</span>
             </p>
           </div>

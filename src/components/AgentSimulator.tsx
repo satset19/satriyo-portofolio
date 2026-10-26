@@ -429,7 +429,7 @@ export function AgentSimulator() {
   }
 
   return (
-    <div className="mc-panel mt-8 space-y-6 p-5 sm:p-7">
+    <div className="mc-panel space-y-6 p-4 sm:p-7">
       {/* Header Bar */}
       <div className="flex flex-col gap-3 border-b border-slate-800 pb-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -438,12 +438,12 @@ export function AgentSimulator() {
               <Bot size={18} aria-hidden />
             </span>
             <div>
-              <p className="pixel-text text-[9px] uppercase tracking-wider text-gold">
+              <p className="pixel-text text-[10px] leading-relaxed uppercase tracking-wider text-gold">
                 AUT-01 & AUT-02 • Execution Sandbox
               </p>
-              <h3 className="pixel-text text-sm sm:text-base text-slate-100">
+              <h2 className="pixel-text text-xs leading-relaxed sm:text-base text-slate-100">
                 Autonomous Multi-Agent Telemetry Simulator
-              </h3>
+              </h2>
             </div>
           </div>
         </div>
@@ -451,11 +451,13 @@ export function AgentSimulator() {
         {/* Live Status Pill */}
         <div className="flex items-center gap-3">
           <div
-            className={`flex items-center gap-2 rounded border px-3 py-1 font-mono text-xs font-semibold ${getStatusColor(
+            role="status"
+            className={`flex items-center gap-2 rounded border px-3 py-1 font-mono text-base font-semibold ${getStatusColor(
               currentStatus,
             )}`}
           >
             <span
+              aria-hidden
               className={`h-2 w-2 rounded-full ${
                 isPlaying ? 'animate-ping bg-current' : 'bg-current'
               }`}
@@ -463,7 +465,7 @@ export function AgentSimulator() {
             STATUS: {currentStatus}
           </div>
 
-          <div className="hidden rounded bg-black/50 px-2.5 py-1 font-mono text-xs text-slate-400 sm:block">
+          <div className="hidden rounded bg-black/50 px-2.5 py-1 font-mono text-base text-slate-400 sm:block">
             STEP {currentStepIndex + 1}/{steps.length}
           </div>
         </div>
@@ -471,31 +473,32 @@ export function AgentSimulator() {
 
       {/* Preset Scenario Picker */}
       <div>
-        <label className="mb-2 block font-mono text-xs uppercase tracking-wide text-slate-400">
+        <p id="sim-scenario-label" className="mb-2 block font-mono text-base uppercase tracking-wide text-slate-300">
           Select Simulation Scenario:
-        </label>
-        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+        </p>
+        <div role="group" aria-labelledby="sim-scenario-label" className="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
           {PRESETS.map((p, idx) => {
             const isSelected = selectedPresetIndex === idx
             return (
               <button
                 key={p.id}
                 type="button"
+                aria-pressed={isSelected}
                 onClick={() => handleSelectPreset(idx)}
-                className={`text-left mc-slot p-3 transition-all ${
+                className={`mc-slot mc-card-interactive p-3 text-left ${
                   isSelected
                     ? 'border-gold bg-[#252528] shadow-[0_0_12px_rgba(252,211,77,0.15)]'
-                    : 'hover:border-slate-600 hover:bg-[#1a1a1d]'
+                    : 'hover:bg-[#1a1a1d]'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="rounded bg-black/60 px-1.5 py-0.5 font-mono text-[9px] text-amber-300">
+                  <span className="rounded bg-black/60 px-1.5 py-0.5 font-mono text-base text-amber-300">
                     {p.badge}
                   </span>
-                  {isSelected && <Sparkles size={14} className="text-gold" />}
+                  {isSelected && <Sparkles size={14} className="text-gold" aria-hidden />}
                 </div>
-                <p className="mt-2 text-xs font-bold text-slate-200 line-clamp-1">{p.title}</p>
-                <p className="mt-1 text-[11px] text-slate-400 line-clamp-2 leading-relaxed font-sans">
+                <p className="mt-2 text-base font-bold text-slate-200 line-clamp-1">{p.title}</p>
+                <p className="mt-1 text-base text-slate-400 line-clamp-2 leading-relaxed font-sans">
                   {p.description}
                 </p>
               </button>
@@ -511,21 +514,21 @@ export function AgentSimulator() {
           <button
             type="button"
             onClick={handleTogglePlay}
-            className={`mc-btn flex items-center gap-2 px-4 py-2 text-[10px] tracking-wide ${
+            className={`mc-btn flex min-h-11 items-center gap-2 px-4 py-2 text-[10px] tracking-wide ${
               isPlaying ? 'mc-btn-yellow' : 'mc-btn-green'
             }`}
           >
             {isPlaying ? (
               <>
-                <Pause size={14} /> PAUSE
+                <Pause size={14} aria-hidden /> PAUSE
               </>
             ) : isCompleted ? (
               <>
-                <RotateCcw size={14} /> REPLAY TRACE
+                <RotateCcw size={14} aria-hidden /> REPLAY TRACE
               </>
             ) : (
               <>
-                <Play size={14} /> RUN TRACE
+                <Play size={14} aria-hidden /> RUN TRACE
               </>
             )}
           </button>
@@ -535,27 +538,29 @@ export function AgentSimulator() {
             type="button"
             disabled={isPlaying || isCompleted}
             onClick={handleStepForward}
-            className="mc-btn px-3 py-2 text-[10px] disabled:opacity-40"
+            className="mc-btn flex h-11 w-11 shrink-0 items-center justify-center disabled:opacity-40"
+            aria-label="Step forward one trace event"
             title="Step forward one trace event"
           >
-            <ChevronRight size={14} />
+            <ChevronRight size={16} aria-hidden />
           </button>
 
           {/* Reset Button */}
           <button
             type="button"
             onClick={handleReset}
-            className="mc-btn px-3 py-2 text-[10px]"
+            className="mc-btn flex h-11 w-11 shrink-0 items-center justify-center"
+            aria-label="Reset simulation"
             title="Reset simulation"
           >
-            <RotateCcw size={14} />
+            <RotateCcw size={16} aria-hidden />
           </button>
         </div>
 
         {/* Speed Selector */}
-        <div className="flex items-center gap-1.5">
-          <span className="font-mono text-xs text-slate-400 flex items-center gap-1">
-            <FastForward size={13} /> SPEED:
+        <div role="group" aria-labelledby="sim-speed-label" className="flex items-center gap-1.5">
+          <span id="sim-speed-label" className="font-mono text-base text-slate-300 flex items-center gap-1">
+            <FastForward size={13} aria-hidden /> SPEED:
           </span>
           {([1, 2, 4] as const).map((spd) => (
             <button
@@ -565,7 +570,8 @@ export function AgentSimulator() {
                 playClick()
                 setPlaybackSpeed(spd)
               }}
-              className={`rounded px-2 py-0.5 font-mono text-xs transition-colors ${
+              aria-pressed={playbackSpeed === spd}
+              className={`flex h-11 min-w-11 items-center justify-center rounded px-2 font-mono text-base transition-colors active:translate-y-px ${
                 playbackSpeed === spd
                   ? 'bg-amber-400 text-black font-bold'
                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
@@ -582,59 +588,59 @@ export function AgentSimulator() {
         {/* Input Tokens */}
         <div className="mc-slot p-3">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="font-mono text-[10px] uppercase">Input Tokens</span>
-            <Activity size={14} className="text-sky-400" />
+            <span className="font-mono text-base uppercase">Input Tokens</span>
+            <Activity size={14} className="text-sky-400" aria-hidden />
           </div>
           <p className="mt-1 font-mono text-lg font-bold text-sky-300">
             {accumulated.inputTokens.toLocaleString()}
           </p>
-          <p className="text-[10px] text-slate-500 font-mono">prompt + tool context</p>
+          <p className="text-base text-slate-400 font-mono">prompt + tool context</p>
         </div>
 
         {/* Output Tokens */}
         <div className="mc-slot p-3">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="font-mono text-[10px] uppercase">Output Tokens</span>
-            <Sparkles size={14} className="text-amber-400" />
+            <span className="font-mono text-base uppercase">Output Tokens</span>
+            <Sparkles size={14} className="text-amber-400" aria-hidden />
           </div>
           <p className="mt-1 font-mono text-lg font-bold text-amber-300">
             {accumulated.outputTokens.toLocaleString()}
           </p>
-          <p className="text-[10px] text-slate-500 font-mono">reasoning + tool calls</p>
+          <p className="text-base text-slate-400 font-mono">reasoning + tool calls</p>
         </div>
 
         {/* Tool Invocations */}
         <div className="mc-slot p-3">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="font-mono text-[10px] uppercase">Tool Invocations</span>
-            <Cpu size={14} className="text-purple-400" />
+            <span className="font-mono text-base uppercase">Tool Invocations</span>
+            <Cpu size={14} className="text-purple-400" aria-hidden />
           </div>
           <p className="mt-1 font-mono text-lg font-bold text-purple-300">
             {accumulated.toolCallsCount}
           </p>
-          <p className="text-[10px] text-slate-500 font-mono">sandboxed executions</p>
+          <p className="text-base text-slate-400 font-mono">sandboxed executions</p>
         </div>
 
         {/* Pipeline Latency */}
         <div className="mc-slot p-3">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="font-mono text-[10px] uppercase">Sim Latency</span>
-            <CheckCircle2 size={14} className="text-emerald-400" />
+            <span className="font-mono text-base uppercase">Sim Latency</span>
+            <CheckCircle2 size={14} className="text-emerald-400" aria-hidden />
           </div>
           <p className="mt-1 font-mono text-lg font-bold text-emerald-300">
             {accumulated.totalLatency}ms
           </p>
-          <p className="text-[10px] text-slate-500 font-mono">subagent execution time</p>
+          <p className="text-base text-slate-400 font-mono">subagent execution time</p>
         </div>
       </div>
 
       {/* Subagents Pool Mesh Indicator */}
       <div className="rounded bg-black/30 p-3 border border-slate-800">
-        <p className="mb-2 font-mono text-[11px] uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-          <Layers size={14} className="text-gold" />
+        <p className="mb-2 font-mono text-base uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+          <Layers size={14} className="text-gold" aria-hidden />
           Active Subagent Pool Matrix:
         </p>
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 text-xs font-mono">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 text-base font-mono">
           <div
             className={`p-2 rounded border ${
               activeStep.agent === 'ORCHESTRATOR'
@@ -646,7 +652,7 @@ export function AgentSimulator() {
               <span>Hermes Lead</span>
               <span className="h-1.5 w-1.5 rounded-full bg-current" />
             </div>
-            <p className="text-[10px] text-slate-500">Plan & State DAG</p>
+            <p className="text-base text-slate-400">Plan & State DAG</p>
           </div>
 
           <div
@@ -660,7 +666,7 @@ export function AgentSimulator() {
               <span>Architect Subagent</span>
               <span className="h-1.5 w-1.5 rounded-full bg-current" />
             </div>
-            <p className="text-[10px] text-slate-500">AST & Dependency</p>
+            <p className="text-base text-slate-400">AST & Dependency</p>
           </div>
 
           <div
@@ -674,7 +680,7 @@ export function AgentSimulator() {
               <span>Worker Subagent</span>
               <span className="h-1.5 w-1.5 rounded-full bg-current" />
             </div>
-            <p className="text-[10px] text-slate-500">Tool Execution</p>
+            <p className="text-base text-slate-400">Tool Execution</p>
           </div>
 
           <div
@@ -688,23 +694,23 @@ export function AgentSimulator() {
               <span>Eval Gate</span>
               <span className="h-1.5 w-1.5 rounded-full bg-current" />
             </div>
-            <p className="text-[10px] text-slate-500">Oxlint & Test Suite</p>
+            <p className="text-base text-slate-400">Oxlint & Test Suite</p>
           </div>
         </div>
       </div>
 
       {/* Terminal Trace Stream Box */}
       <div className="space-y-2">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <Terminal size={14} className="text-emerald-400" />
-            <span className="font-mono text-xs uppercase tracking-wide text-slate-300">
+            <Terminal size={14} className="text-emerald-400" aria-hidden />
+            <span className="font-mono text-base uppercase tracking-wide text-slate-300">
               Live Subagent Trace Log
             </span>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex items-center gap-1 font-mono text-[10px]">
+          <div role="group" aria-label="Filter trace log" className="flex items-center gap-1 font-mono text-base">
             {(['ALL', 'TOOLS', 'GATES'] as const).map((filter) => (
               <button
                 key={filter}
@@ -713,7 +719,8 @@ export function AgentSimulator() {
                   playClick()
                   setLogFilter(filter)
                 }}
-                className={`rounded px-2 py-0.5 transition-colors ${
+                aria-pressed={logFilter === filter}
+                className={`flex h-11 min-w-11 items-center justify-center rounded px-2 transition-colors ${
                   logFilter === filter
                     ? 'bg-slate-700 text-white font-bold'
                     : 'text-slate-400 hover:text-slate-200'
@@ -728,22 +735,22 @@ export function AgentSimulator() {
         {/* Terminal Window */}
         <div className="rounded border border-slate-700 bg-[#0d0e12] shadow-2xl overflow-hidden">
           {/* Window Title Bar */}
-          <div className="flex items-center justify-between border-b border-slate-800 bg-[#16171f] px-3 py-1.5 text-[11px] font-mono text-slate-400">
-            <div className="flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-b border-slate-800 bg-[#16171f] px-3 py-1.5 text-base font-mono text-slate-400">
+            <div className="flex min-w-0 items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
               <span className="h-2.5 w-2.5 rounded-full bg-amber-500/70" />
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/70" />
-              <span className="ml-2 text-slate-300">
+              <span className="ml-2 min-w-0 truncate text-slate-300">
                 hermes-agent-trace://session/{preset.id}
               </span>
             </div>
-            <span className="text-[10px] text-emerald-400">STREAMING • WS-ONLINE</span>
+            <span className="text-base text-emerald-400">STREAMING • WS-ONLINE</span>
           </div>
 
           {/* Logs Container */}
           <div
             ref={logContainerRef}
-            className="max-h-64 min-h-48 overflow-y-auto p-3 font-mono text-xs leading-relaxed space-y-2 selection:bg-slate-800"
+            className="max-h-64 min-h-48 overflow-y-auto p-3 font-mono text-base leading-relaxed space-y-2 selection:bg-slate-800"
           >
             {visibleLogs.map((log, index) => {
               const isLatest = index === visibleLogs.length - 1
@@ -757,9 +764,19 @@ export function AgentSimulator() {
               return (
                 <div
                   key={log.id}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={log.toolPayload || log.toolResult ? isSelected : undefined}
                   onClick={() => {
                     playClick()
                     setActiveLogId(isSelected ? null : log.id)
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      playClick()
+                      setActiveLogId(isSelected ? null : log.id)
+                    }
                   }}
                   className={`cursor-pointer rounded p-1.5 transition-colors ${
                     isSelected
@@ -770,16 +787,16 @@ export function AgentSimulator() {
                   }`}
                 >
                   <div className="flex flex-wrap items-baseline gap-2">
-                    <span className="text-slate-500 text-[10px]">[{log.timestamp}]</span>
-                    <span className={`font-bold text-[11px] ${agentColor}`}>
+                    <span className="text-slate-400 text-base">[{log.timestamp}]</span>
+                    <span className={`font-bold text-base ${agentColor}`}>
                       [{log.agent}]
                     </span>
-                    <span className="rounded bg-black/60 px-1 py-0.2 text-[9px] text-slate-400">
+                    <span className="rounded bg-black/60 px-1 py-0.5 text-base text-slate-400">
                       {log.type}
                     </span>
                     <span className="flex-1 text-slate-200">{log.title}</span>
                     {log.toolName && (
-                      <span className="rounded bg-sky-950/80 px-1.5 py-0.5 text-[10px] text-sky-300 border border-sky-800/60">
+                      <span className="rounded bg-sky-950/80 px-1.5 py-0.5 text-base text-sky-300 border border-sky-800/60">
                         ⚡ {log.toolName}
                       </span>
                     )}
@@ -787,10 +804,10 @@ export function AgentSimulator() {
 
                   {/* Expandable Tool Inspection */}
                   {isSelected && (log.toolPayload || log.toolResult) && (
-                    <div className="mt-2.5 rounded bg-black/80 p-2.5 text-[11px] text-slate-300 border border-slate-800">
+                    <div className="mt-2.5 rounded bg-black/80 p-2.5 text-base text-slate-300 border border-slate-800">
                       {log.toolPayload && (
                         <div>
-                          <p className="text-[10px] font-bold text-sky-400 mb-1">
+                          <p className="text-base font-bold text-sky-400 mb-1">
                             &gt; Tool Arguments:
                           </p>
                           <pre className="overflow-x-auto text-slate-300 whitespace-pre-wrap font-mono">
@@ -800,7 +817,7 @@ export function AgentSimulator() {
                       )}
                       {log.toolResult && (
                         <div className="mt-2 pt-2 border-t border-slate-800">
-                          <p className="text-[10px] font-bold text-emerald-400 mb-1">
+                          <p className="text-base font-bold text-emerald-400 mb-1">
                             &lt; Tool Execution Output:
                           </p>
                           <pre className="overflow-x-auto text-slate-300 whitespace-pre-wrap font-mono">
@@ -815,11 +832,11 @@ export function AgentSimulator() {
             })}
 
             {visibleLogs.length === 0 && (
-              <p className="text-slate-500 italic">No events match current filter.</p>
+              <p className="text-slate-400 italic">No events match current filter.</p>
             )}
 
             {isPlaying && (
-              <div className="flex items-center gap-2 pt-1 text-slate-400 text-[11px]">
+              <div className="flex items-center gap-2 pt-1 text-slate-400 text-base">
                 <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
                 <span>Executing autonomous step...</span>
               </div>

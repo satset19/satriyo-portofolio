@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://satset19.github.io/satriyo-portofolio/sitemap.xml

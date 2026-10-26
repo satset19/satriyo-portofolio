@@ -9,6 +9,9 @@
   "7": "Section",
   "8": "useSound.ts",
   "9": ".oxlintrc.json",
-  "11": "React + TypeScript + Vite",
-  "12": "tsconfig.json"
+  "10": "deploy.yml",
+  "11": "GameBackdrop.tsx",
+  "12": "tsconfig.json",
+  "13": "HudToggles.tsx",
+  "14": "Satriyo Portfolio"
 }

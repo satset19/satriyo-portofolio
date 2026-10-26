@@ -35,10 +35,11 @@ export function Hero() {
 
   return (
     <header className="relative">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-6 sm:px-8">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 py-4 pr-30 pl-4 sm:px-8 sm:py-6 sm:pr-32 lg:pr-8">
         <a
-          href="#top"
-          className="pixel-text text-xs"
+          href="#/spawn"
+          aria-label="satriyo, home"
+          className="pixel-text inline-flex min-h-11 items-center text-xs"
           style={{ textShadow: '2px 2px 0 rgb(0 0 0 / 0.8)' }}
         >
           satriyo<span className="text-accent">.</span>
@@ -51,8 +52,8 @@ export function Hero() {
             href="https://github.com/satset19"
             target="_blank"
             rel="noopener noreferrer"
-            className="mc-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-[9px] focus-visible:outline-3 focus-visible:outline-xp"
-            aria-label="GitHub profile"
+            className="mc-btn inline-flex min-h-11 items-center gap-1.5 px-3 py-2 text-[9px]"
+            aria-label="GitHub profile (opens in a new tab)"
           >
             <GithubIcon size={14} />
             <span>GitHub</span>
@@ -60,19 +61,19 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="hero-scrim mx-auto w-full max-w-6xl px-5 pt-14 pb-24 sm:px-8 sm:pt-20">
+      <div className="hero-scrim mx-auto w-full max-w-6xl px-4 pt-8 pb-16 sm:px-8 sm:pt-20 sm:pb-24">
         <p
           className="hero-enter pixel-text text-[10px] text-gold sm:text-xs"
           style={{ '--i': 0, textShadow: '2px 2px 0 rgb(0 0 0 / 0.8)' } as React.CSSProperties}
         >
-          Satriyo — Senior Backend & Infrastructure Engineer
+          Satriyo | Senior Backend & Infrastructure Engineer
         </p>
         <h1
           tabIndex={-1}
-          className="hero-enter pixel-text mt-6 max-w-3xl text-xl leading-relaxed outline-none sm:text-2xl md:text-3xl"
+          className="hero-enter pixel-text mt-6 max-w-3xl text-base leading-relaxed outline-none min-[390px]:text-lg sm:text-2xl md:text-3xl"
           style={{ '--i': 1, textShadow: '3px 3px 0 rgb(0 0 0 / 0.8)' } as React.CSSProperties}
         >
-          I build realtime messaging infrastructure —{' '}
+          I build realtime messaging infrastructure,{' '}
           <span className="text-accent">from device to browser in under a second.</span>
         </h1>
         <p
@@ -89,26 +90,26 @@ export function Hero() {
           and the Kubernetes platform that ships them. Multi-tenant by design, measured in milliseconds.
         </p>
         <div
-          className="hero-enter mt-10 flex flex-wrap gap-4"
+          className="hero-enter mt-8 flex flex-col gap-3 min-[480px]:flex-row min-[480px]:flex-wrap sm:mt-10 sm:gap-4"
           style={{ '--i': 4 } as React.CSSProperties}
         >
           <button
             type="button"
             onClick={() => goTo('quests')}
-            className="mc-btn mc-btn-green inline-flex items-center gap-2 px-5 py-3 text-[10px] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-xp"
+            className="mc-btn mc-btn-green inline-flex min-h-11 items-center justify-center gap-2 px-5 py-3 text-[10px]"
           >
             View the quests <ArrowRight size={14} aria-hidden />
           </button>
           <button
             type="button"
             onClick={() => goTo('arcade')}
-            className="mc-btn inline-flex items-center gap-2 px-5 py-3 text-[10px] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-xp"
+            className="mc-btn inline-flex min-h-11 items-center justify-center gap-2 px-5 py-3 text-[10px]"
           >
             <Gamepad2 size={14} aria-hidden /> Play Minigame
           </button>
           <a
             href="mailto:laksonosatriyo@gmail.com"
-            className="mc-btn inline-flex items-center gap-2 px-5 py-3 text-[10px] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-xp"
+            className="mc-btn inline-flex min-h-11 items-center justify-center gap-2 px-5 py-3 text-[10px]"
           >
             <Mail size={14} aria-hidden /> Get in touch
           </a>

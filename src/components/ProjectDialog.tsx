@@ -16,21 +16,46 @@ export function ProjectDialog({ project, onClose }: ProjectDialogProps) {
   if (project) lastRef.current = project
   const shown = project ?? lastRef.current
 
+  const closeRef = useRef<HTMLButtonElement>(null)
+
   useEffect(() => {
     const dialog = ref.current
     if (!dialog) return
     if (project && !dialog.open) {
       dialog.showModal()
       document.body.style.overflow = 'hidden'
+      closeRef.current?.focus()
     }
     if (!project && dialog.open) {
       dialog.close()
     }
   }, [project])
 
+  // Never leave the page scroll-locked if the grid unmounts with the dialog open
+  useEffect(() => () => void (document.body.style.overflow = ''), [])
+
   const handleClose = () => {
     document.body.style.overflow = ''
     onClose()
+  }
+
+  // Keep Tab / Shift+Tab cycling inside the dialog (showModal already makes the
+  // page inert; this stops focus escaping to the browser chrome).
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDialogElement>) => {
+    if (e.key !== 'Tab' || !ref.current) return
+    const focusable = ref.current.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    )
+    if (focusable.length === 0) return
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault()
+      last.focus()
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault()
+      first.focus()
+    }
   }
 
   const Icon = shown?.icon
@@ -38,42 +63,48 @@ export function ProjectDialog({ project, onClose }: ProjectDialogProps) {
     <dialog
       ref={ref}
       onClose={handleClose}
+      onCancel={() => playClick()}
+      onKeyDown={handleKeyDown}
       onClick={(e) => {
         if (e.target === ref.current) ref.current?.close()
       }}
-      aria-label={shown?.title}
-      className="mc-tooltip m-auto w-[min(92vw,640px)] p-0 text-text"
+      aria-labelledby="project-dialog-title"
+      aria-describedby="project-dialog-summary"
+      className="mc-tooltip m-auto max-h-[calc(100dvh-2rem)] w-[min(92vw,640px)] overflow-y-auto p-0 text-text"
     >
       {shown && Icon && (
-        <div className="p-6 sm:p-7">
+        <div className="p-5 sm:p-7">
           <div className="flex items-start justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <span className="mc-panel p-2.5 text-gold">
+            <div className="flex min-w-0 items-center gap-3">
+              <span className="mc-panel shrink-0 p-2.5 text-gold">
                 <Icon size={20} aria-hidden />
               </span>
-              <div>
-                <p className="pixel-text text-[8px] tracking-wide text-slate-400 uppercase">
+              <div className="min-w-0">
+                <p className="pixel-text text-[9px] tracking-wide text-slate-300 uppercase">
                   {CATEGORY_LABELS[shown.category]} quest
                 </p>
-                <h3 className="pixel-text mt-1 text-xs leading-relaxed text-gold sm:text-sm">
+                <h2 id="project-dialog-title" className="pixel-text mt-1 text-xs leading-relaxed text-gold sm:text-sm">
                   {shown.title}
-                </h3>
+                </h2>
               </div>
             </div>
             <button
+              ref={closeRef}
               type="button"
               onClick={() => {
                 playClick()
                 ref.current?.close()
               }}
               aria-label="Close dialog"
-              className="mc-btn p-2 focus-visible:outline-3 focus-visible:outline-xp"
+              className="mc-btn flex h-11 w-11 shrink-0 items-center justify-center"
             >
-              <X size={16} aria-hidden />
+              <X size={18} aria-hidden />
             </button>
           </div>
 
-          <p className="mt-4 text-xl leading-snug text-slate-200">{shown.oneLiner}</p>
+          <p id="project-dialog-summary" className="mt-4 text-xl leading-snug text-slate-200">
+            {shown.oneLiner}
+          </p>
 
           <ul className="mt-5 space-y-2.5">
             {shown.highlights.map((highlight) => (
@@ -84,7 +115,7 @@ export function ProjectDialog({ project, onClose }: ProjectDialogProps) {
             ))}
           </ul>
 
-          <ul className="mt-6 flex flex-wrap gap-1.5 border-t-2 border-purple-900/60 pt-5">
+          <ul aria-label="Tech stack" className="mt-6 flex flex-wrap gap-1.5 border-t-2 border-purple-900/60 pt-5">
             {shown.tags.map((tag) => (
               <li key={tag} className="mc-tooltip px-2 py-0.5 text-base text-purple-300">
                 {tag}

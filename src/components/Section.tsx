@@ -12,13 +12,14 @@ export function Section({ id, kicker, title, children }: SectionProps) {
   const { ref, inView } = useInView<HTMLElement>(0.05)
 
   return (
-    <section id={id} ref={ref} className="mx-auto w-full max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8">
-      <div className="mc-panel-glass p-6 sm:p-10">
+    <section id={id} ref={ref} aria-labelledby={`${id}-title`}
+      className="mx-auto w-full max-w-6xl scroll-mt-24 px-4 py-8 sm:px-8 sm:py-10">
+      <div className="mc-panel-glass p-5 sm:p-10">
         <div className={`reveal ${inView ? 'revealed' : ''}`}>
-          <p className="pixel-text text-[9px] tracking-wider text-gold uppercase">{kicker}</p>
-          <h2 tabIndex={-1} className="pixel-text mt-3 text-base outline-none sm:text-xl">
+          <p className="pixel-text text-[10px] leading-relaxed tracking-wider text-gold uppercase">{kicker}</p>
+          <h1 id={`${id}-title`} tabIndex={-1} className="pixel-text mt-3 text-sm leading-relaxed outline-none min-[390px]:text-base sm:text-xl">
             {title}
-          </h2>
+          </h1>
         </div>
         <div className="mt-8">{children}</div>
       </div>

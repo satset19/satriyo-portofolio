@@ -31,14 +31,14 @@ export function AchievementToast({ page }: { page: Page }) {
   return (
     <div
       aria-live="polite"
-      className="fixed top-4 left-1/2 z-30 -translate-x-1/2 sm:left-auto sm:right-4 sm:translate-x-0"
+      className="pointer-events-none fixed top-16 left-1/2 z-30 w-max max-w-[calc(100vw-1.5rem)] -translate-x-1/2 sm:top-20 sm:left-auto sm:right-4 sm:translate-x-0"
     >
       {current && (
         <div className="toast-in mc-panel flex items-center gap-3 px-4 py-3">
           <Trophy size={20} className="text-gold" aria-hidden />
           <div>
-            <p className="pixel-text text-[9px] text-gold">Achievement get!</p>
-            <p className="text-lg leading-tight">{current}</p>
+            <p className="pixel-text text-[10px] text-gold">Achievement get!</p>
+            <p className="text-xl leading-tight">{current}</p>
           </div>
         </div>
       )}
