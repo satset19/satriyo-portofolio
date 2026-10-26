@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://satset19.github.io/satriyo-portofolio/sitemap.xml
+Sitemap: https://satriyo-portofolio.vercel.app/sitemap.xml

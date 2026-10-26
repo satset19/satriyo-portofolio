@@ -2,7 +2,7 @@
 
 A game-themed portfolio for Satriyo, Senior Backend & Infrastructure Engineer. The site is built like a voxel sandbox world: each section is a "page" you travel to from a hotbar, a live 3D voxel island renders behind the content, and an arcade page hosts a playable mining minigame.
 
-Live site: https://satset19.github.io/satriyo-portofolio/
+Live site: https://satriyo-portofolio.vercel.app/
 
 ## Features
 
@@ -24,7 +24,7 @@ Live site: https://satset19.github.io/satriyo-portofolio/
 | 3D | three.js, @react-three/fiber |
 | Icons | lucide-react |
 | Lint | oxlint |
-| Hosting | GitHub Pages via GitHub Actions |
+| Hosting | Vercel |
 
 ## Getting started
 
@@ -35,15 +35,13 @@ pnpm install
 pnpm dev        # dev server at http://localhost:5173/
 ```
 
-The dev server serves from `/`. Production builds use the `/satriyo-portofolio/` base path.
-
 ## Scripts
 
 | Command | Description |
 | --- | --- |
 | `pnpm dev` | Start the Vite dev server with HMR |
 | `pnpm build` | Type-check (`tsc -b`) and build to `dist/` |
-| `pnpm preview` | Serve the production build locally at `http://localhost:4173/satriyo-portofolio/` |
+| `pnpm preview` | Serve the production build locally at `http://localhost:4173/` |
 | `pnpm lint` | Run oxlint |
 
 ## Build and bundle layout
@@ -58,24 +56,17 @@ Chunk splitting is configured in `vite.config.ts` (`manualChunks`).
 
 ## Deployment
 
-The site deploys to GitHub Pages through `.github/workflows/deploy.yml`:
+The site is deployed on Vercel (https://satriyo-portofolio.vercel.app). Every push to `main` triggers a production deploy through the Vercel GitHub integration; other branches get preview deploys.
 
-1. Triggered on push to `main` or manually (`workflow_dispatch`).
-2. Installs dependencies with pnpm (`--frozen-lockfile`), runs lint and build.
-3. Copies `index.html` to `404.html` as a fallback, then publishes `dist/` with `actions/upload-pages-artifact` and `actions/deploy-pages`.
-
-One-time setup: in the repository settings, go to Pages and set Source to "GitHub Actions".
-
-If the repository is renamed or served from a custom domain, update `PAGES_BASE` in `vite.config.ts`, the absolute URLs in `index.html` (canonical, `og:url`, `og:image`, `twitter:image`), and `public/robots.txt` / `public/sitemap.xml`.
+If the site moves to a custom domain, update the absolute URLs in `index.html` (canonical, `og:url`, `og:image`, `twitter:image`) and `public/robots.txt` / `public/sitemap.xml`.
 
 ## Project structure
 
 ```
 .
-├── .github/workflows/deploy.yml   GitHub Pages build and deploy
 ├── public/                        Static files copied as-is (favicon, og-image, robots.txt, sitemap.xml)
 ├── index.html                     HTML entry, SEO and social meta tags
-├── vite.config.ts                 Base path and chunk splitting
+├── vite.config.ts                 Chunk splitting
 └── src/
     ├── main.tsx                   React root
     ├── App.tsx                    Layout, lazy route loading, page transitions
