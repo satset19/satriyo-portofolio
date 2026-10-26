@@ -6,7 +6,7 @@ export const GUIDE_LINES: Record<Page, string> = {
   pipeline:
     'This is the redstone line: follow one message from a phone all the way to the browser. It arrives in under 200 milliseconds — hover the stations to see each stage.',
   quests:
-    'The quest log! Nine shipped systems across backend, frontend, and platform. Click any card to read the full story behind it.',
+    'The quest log! Ten shipped systems across backend, AI orchestration, frontend, and platform. Click any card to read the full story behind it.',
   skills: 'The skill tree — every language, framework, and tool used to complete those quests.',
   lore: 'A bit of lore: how Satriyo thinks about building software. Short read, worth it.',
   contact:

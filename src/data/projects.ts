@@ -9,6 +9,7 @@ import {
   MessagesSquare,
   Wrench,
   Container,
+  Bot,
 } from 'lucide-react'
 
 export type Category = 'backend' | 'frontend' | 'platform'
@@ -181,6 +182,23 @@ export const projects: Project[] = [
       'Clustered NATS JetStream (3 replicas, memory + file store) and Redis managed as stateful services with tuned limits.',
       'Generic deployment template: graceful WebSocket drain (preStop sleep + 45s grace), downward-API injection, polymorphic volumes.',
       'Hierarchical secrets broker API over a vault backend: global, tenant, and instance-scoped paths.',
+    ],
+  },
+  {
+    id: 'agent-orchestrator',
+    title: 'Autonomous Multi-Agent AI Orchestrator',
+    category: 'backend',
+    icon: Bot,
+    oneLiner:
+      'Distributed multi-agent execution runtime managing up to 10 parallel subagents with sandboxed tool execution, streaming LLM inference, and WebSocket telemetry.',
+    tags: ['Go', 'TypeScript', 'LLM APIs', 'Docker', 'WebSocket'],
+    highlights: [
+      'Parallel subagent dispatcher orchestrating up to 10 concurrent worker sessions with isolated conversation contexts and inter-agent coordination.',
+      'Sandboxed tool execution layer with policy interception, AST safety validation, and dangerous command protection.',
+      'Realtime bidirectional event gateway streaming reasoning tokens, tool calls, and lifecycle events over WebSocket with backpressure control.',
+      'Persistent memory architecture combining local vector retrieval (RAG) with SQLite durable session storage.',
+      'Self-healing agent loop: structured schema validation with bounded auto-correction on API format mismatches.',
+      'Virtual 3D office bridge synchronizing agent spatial presence, active task state, and ambient avatars.',
     ],
   },
 ]

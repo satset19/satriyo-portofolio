@@ -1,5 +1,4 @@
 export function About() {
-  console.log("lewat page about")
   return (
     <div className="grid max-w-3xl gap-6 text-xl leading-snug text-slate-300">
       <p className="leading-relaxed">
@@ -19,6 +18,12 @@ export function About() {
         I treat the platform around the code as part of the product: 60+ maintained architecture
         docs with owners and freshness tracking, SLO-organized alert rules with runbooks, and a
         shared CI pipeline every service inherits instead of copies.
+      </p>
+      <p className="leading-relaxed">
+        Beyond raw message plumbing, I architect autonomous multi-agent runtimes and LLM tooling
+        pipelines: dispatching concurrent subagent workflows, enforcing strict schema validation
+        gates, and serving low-latency streaming back to user interfaces without sacrificing
+        reliability.
       </p>
     </div>
   )

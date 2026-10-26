@@ -6,10 +6,10 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
   {
     title: 'Languages',
-    skills: ['Go', 'TypeScript', 'JavaScript', 'SQL'],
+    skills: ['Go', 'TypeScript', 'JavaScript', 'Python', 'SQL'],
   },
   {
-    title: 'Backend & Messaging',
+    title: 'Backend & Distributed Systems',
     skills: [
       'NATS JetStream',
       'gRPC',
@@ -17,30 +17,42 @@ export const skillCategories: SkillCategory[] = [
       'Fastify',
       'Fiber',
       'GraphQL',
-      'REST',
+      'REST APIs',
       'CDC pipelines',
     ],
   },
   {
-    title: 'Frontend',
+    title: 'AI & Autonomous Systems',
     skills: [
-      'React',
+      'Multi-Agent Orchestration',
+      'Tool Execution Engines',
+      'Prompt Workflows',
+      'LLM APIs & Streaming',
+      'Vector Stores & Embeddings',
+      'RAG Architectures',
+    ],
+  },
+  {
+    title: 'Frontend & 3D Web',
+    skills: [
+      'React 19',
+      'Three.js / React Three Fiber',
       'Vite',
       'TanStack Router/Query',
       'Zustand',
       'Tailwind CSS',
       'shadcn/ui',
-      'Ant Design',
     ],
   },
   {
-    title: 'Data & Infrastructure',
+    title: 'Data, Platform & Infrastructure',
     skills: [
       'PostgreSQL',
       'Redis',
       'MongoDB',
       'Trino',
       'Kubernetes',
+      'Docker',
       'Helm / Helmfile',
       'GitLab CI',
       'Prometheus / Grafana',

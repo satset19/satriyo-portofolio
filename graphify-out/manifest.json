@@ -1,0 +1,308 @@
+{
+  ".oxlintrc.json": {
+    "mtime": 1793025656.080317,
+    "seen": 1793026618.9571679,
+    "ast_hash": "029f4905006c1fffd96bc863e2d98d3e",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1793025656.080317,
+    "seen": 1793026618.9571874,
+    "ast_hash": "a8d716054a8ece4e4590332662a91ea8",
+    "semantic_hash": ""
+  },
+  "src/App.tsx": {
+    "mtime": 1793025656.082317,
+    "seen": 1793026618.957197,
+    "ast_hash": "dc92c400100aa1f56740cc01c06fe2b3",
+    "semantic_hash": ""
+  },
+  "src/components/About.tsx": {
+    "mtime": 1793026264.5630524,
+    "seen": 1793026618.9572048,
+    "ast_hash": "b93a1f039a53da72e6e6d8727bca51d7",
+    "semantic_hash": ""
+  },
+  "src/components/ArchitectureFlow.tsx": {
+    "mtime": 1793025656.083317,
+    "seen": 1793026618.9572122,
+    "ast_hash": "98e7febdf4771dde7f3075efff486438",
+    "semantic_hash": ""
+  },
+  "src/components/Contact.tsx": {
+    "mtime": 1793026491.4482303,
+    "seen": 1793026618.95722,
+    "ast_hash": "7f025d2b475b6b66000c3e705969eb8f",
+    "semantic_hash": ""
+  },
+  "src/components/FilterTabs.tsx": {
+    "mtime": 1793025656.0843172,
+    "seen": 1793026618.9572287,
+    "ast_hash": "595cb3d1e96cdebce5c7d9250d087e41",
+    "semantic_hash": ""
+  },
+  "src/components/GuideCharacter.tsx": {
+    "mtime": 1793025656.0843172,
+    "seen": 1793026618.957237,
+    "ast_hash": "02301ff476dadcca8e423121a8330a53",
+    "semantic_hash": ""
+  },
+  "src/components/Hero.tsx": {
+    "mtime": 1793026470.1797442,
+    "seen": 1793026618.957246,
+    "ast_hash": "75c749bdf8d347d291f8ab4144622020",
+    "semantic_hash": ""
+  },
+  "src/components/LoadingScreen.tsx": {
+    "mtime": 1793025656.0843172,
+    "seen": 1793026618.9572532,
+    "ast_hash": "1ebfde1ffe78379827780842f026ddc0",
+    "semantic_hash": ""
+  },
+  "src/components/ProjectCard.tsx": {
+    "mtime": 1793025656.0843172,
+    "seen": 1793026618.95726,
+    "ast_hash": "c2f6a7c5e861834dc1f717a5e5bc845d",
+    "semantic_hash": ""
+  },
+  "src/components/ProjectDialog.tsx": {
+    "mtime": 1793025656.0843172,
+    "seen": 1793026618.9572673,
+    "ast_hash": "8264bfd519eb9f84e6550912bc19854b",
+    "semantic_hash": ""
+  },
+  "src/components/ProjectGrid.tsx": {
+    "mtime": 1793025656.0853171,
+    "seen": 1793026618.9572735,
+    "ast_hash": "00ce7d3ac0b66cd14cbbbdaabb98c36a",
+    "semantic_hash": ""
+  },
+  "src/components/Section.tsx": {
+    "mtime": 1793025656.0853171,
+    "seen": 1793026618.95728,
+    "ast_hash": "83fab4400bf81e1a515886bf839c3c2e",
+    "semantic_hash": ""
+  },
+  "src/components/SkillsGrid.tsx": {
+    "mtime": 1793025656.0853171,
+    "seen": 1793026618.957286,
+    "ast_hash": "248df749b9f5d85437674e5e74655f97",
+    "semantic_hash": ""
+  },
+  "src/components/StatsBar.tsx": {
+    "mtime": 1793025656.0853171,
+    "seen": 1793026618.9572926,
+    "ast_hash": "12fccc1134681f55033b2c5c87dd2f23",
+    "semantic_hash": ""
+  },
+  "src/components/hud/AchievementToast.tsx": {
+    "mtime": 1793025656.086317,
+    "seen": 1793026618.9572983,
+    "ast_hash": "8324961d5cf8bb5692ca290ed03e3cf7",
+    "semantic_hash": ""
+  },
+  "src/components/hud/Hotbar.tsx": {
+    "mtime": 1793025656.086317,
+    "seen": 1793026618.9573035,
+    "ast_hash": "0ae873debbe6420031913f0a02dddbe1",
+    "semantic_hash": ""
+  },
+  "src/components/hud/HudToggles.tsx": {
+    "mtime": 1793025656.086317,
+    "seen": 1793026618.9573095,
+    "ast_hash": "b149f6cf12303b46f088697eb0445c45",
+    "semantic_hash": ""
+  },
+  "src/components/hud/XpBar.tsx": {
+    "mtime": 1793025656.086317,
+    "seen": 1793026618.9573147,
+    "ast_hash": "19ca5ae7dc1e9385ff5984b319b916eb",
+    "semantic_hash": ""
+  },
+  "src/data/archNodes.ts": {
+    "mtime": 1793025656.086317,
+    "seen": 1793026618.9573205,
+    "ast_hash": "d59d5aebc8d2acf4980b386ef48ceb2f",
+    "semantic_hash": ""
+  },
+  "src/data/guideScript.ts": {
+    "mtime": 1793026383.4417632,
+    "seen": 1793026618.9573271,
+    "ast_hash": "c29ab4345d732466ea6a214a16c627ef",
+    "semantic_hash": ""
+  },
+  "src/data/projects.ts": {
+    "mtime": 1793026372.0595033,
+    "seen": 1793026618.9573357,
+    "ast_hash": "7bd3372be060c908685f481384900056",
+    "semantic_hash": ""
+  },
+  "src/data/skills.ts": {
+    "mtime": 1793026302.5399177,
+    "seen": 1793026618.9573421,
+    "ast_hash": "2e04eefe374c5110d6d1a8f2708e7113",
+    "semantic_hash": ""
+  },
+  "src/data/stats.ts": {
+    "mtime": 1793026338.3957353,
+    "seen": 1793026618.957348,
+    "ast_hash": "ee99030baeffeedfdcff7ee405cf6916",
+    "semantic_hash": ""
+  },
+  "src/game/GameBackdrop.tsx": {
+    "mtime": 1793025656.0873172,
+    "seen": 1793026618.9573863,
+    "ast_hash": "00957d4c2c02401fdff067aa86d0aa39",
+    "semantic_hash": ""
+  },
+  "src/game/VoxelWorld.tsx": {
+    "mtime": 1793025656.0873172,
+    "seen": 1793026618.9573953,
+    "ast_hash": "2215296a04bcbe71724cf9ed175c1fe2",
+    "semantic_hash": ""
+  },
+  "src/game/terrain.ts": {
+    "mtime": 1793025656.0883172,
+    "seen": 1793026618.9574015,
+    "ast_hash": "dbcc62bdbcc4294e7ec8d0316ac58149",
+    "semantic_hash": ""
+  },
+  "src/game/useSound.ts": {
+    "mtime": 1793025656.0883172,
+    "seen": 1793026618.9574082,
+    "ast_hash": "49e2dc7c686d64a05e062694ad7ce503",
+    "semantic_hash": ""
+  },
+  "src/game/worldState.ts": {
+    "mtime": 1793025656.0883172,
+    "seen": 1793026618.9574144,
+    "ast_hash": "c67dba4ae60f0857fe1751bec3b42955",
+    "semantic_hash": ""
+  },
+  "src/hooks/useCountUp.ts": {
+    "mtime": 1793025656.0883172,
+    "seen": 1793026618.9574206,
+    "ast_hash": "833feb489eac6656150dab59659beaf8",
+    "semantic_hash": ""
+  },
+  "src/hooks/useInView.ts": {
+    "mtime": 1793025656.0883172,
+    "seen": 1793026618.9574273,
+    "ast_hash": "de7da00db63f64ae47489b6436168263",
+    "semantic_hash": ""
+  },
+  "src/hooks/usePrefersReducedMotion.ts": {
+    "mtime": 1793025656.0883172,
+    "seen": 1793026618.9574337,
+    "ast_hash": "3eda29c3419bddf046982a5e3adc8c74",
+    "semantic_hash": ""
+  },
+  "src/main.tsx": {
+    "mtime": 1793025656.0893173,
+    "seen": 1793026618.95744,
+    "ast_hash": "787e5a07efeb2bf6209d5937195f2f68",
+    "semantic_hash": ""
+  },
+  "src/pages/ContactPage.tsx": {
+    "mtime": 1793025656.0893173,
+    "seen": 1793026618.9574459,
+    "ast_hash": "e09b2d73888e3fcd7facf2a5cd758dad",
+    "semantic_hash": ""
+  },
+  "src/pages/LorePage.tsx": {
+    "mtime": 1793025656.0893173,
+    "seen": 1793026618.9574523,
+    "ast_hash": "bb532082577e4a330f55ee1835d1cc15",
+    "semantic_hash": ""
+  },
+  "src/pages/PipelinePage.tsx": {
+    "mtime": 1793025656.0893173,
+    "seen": 1793026618.9574585,
+    "ast_hash": "b025ef254024faed7adf5cbb0787b115",
+    "semantic_hash": ""
+  },
+  "src/pages/QuestsPage.tsx": {
+    "mtime": 1793025656.0893173,
+    "seen": 1793026618.9574642,
+    "ast_hash": "332766ebe48f2671d09cac2772dc6652",
+    "semantic_hash": ""
+  },
+  "src/pages/SkillsPage.tsx": {
+    "mtime": 1793025656.0903172,
+    "seen": 1793026618.9574707,
+    "ast_hash": "597afbdd4f8dcb7315984d377de6cf04",
+    "semantic_hash": ""
+  },
+  "src/pages/SpawnPage.tsx": {
+    "mtime": 1793025656.0903172,
+    "seen": 1793026618.9574773,
+    "ast_hash": "b82f473fecf8d646d9c8130d63ab5769",
+    "semantic_hash": ""
+  },
+  "src/router.ts": {
+    "mtime": 1793025656.0903172,
+    "seen": 1793026618.9574845,
+    "ast_hash": "0bf56e0ce6c0d63dc17bcfb8e987e35a",
+    "semantic_hash": ""
+  },
+  "tsconfig.app.json": {
+    "mtime": 1793025656.0903172,
+    "seen": 1793026618.957491,
+    "ast_hash": "5f2dafd737dea8a4ddcbb10f5113ac5a",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1793025656.0903172,
+    "seen": 1793026618.9574971,
+    "ast_hash": "a3d39fa780ebff65444de257f291ce6c",
+    "semantic_hash": ""
+  },
+  "tsconfig.node.json": {
+    "mtime": 1793025656.0903172,
+    "seen": 1793026618.9575086,
+    "ast_hash": "f9cb81ddcea69ffdab672fc8c48dca66",
+    "semantic_hash": ""
+  },
+  "vite.config.ts": {
+    "mtime": 1793025656.0903172,
+    "seen": 1793026618.9575148,
+    "ast_hash": "60b22c6831f3f0493394a9ffb67a7852",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1793025656.080317,
+    "seen": 1793026618.9577127,
+    "ast_hash": "10495bfcc6c568eca4dab6dd5df795d3",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1793026512.4367101,
+    "seen": 1793026618.9577286,
+    "ast_hash": "423450b3dded779a996dc4638dd439c2",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1793025656.081317,
+    "seen": 1793026618.957735,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": ""
+  },
+  "public/icons.svg": {
+    "mtime": 1793025656.082317,
+    "seen": 1793026618.9577413,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": ""
+  },
+  "src/assets/hero.png": {
+    "mtime": 1793025656.082317,
+    "seen": 1793026618.9577477,
+    "ast_hash": "aead493361b27e7510691c5d7072dfc1",
+    "semantic_hash": ""
+  },
+  "src/assets/vite.svg": {
+    "mtime": 1793025656.083317,
+    "seen": 1793026618.9577537,
+    "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": ""
+  }
+}
