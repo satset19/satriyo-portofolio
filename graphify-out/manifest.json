@@ -12,9 +12,9 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1793029201.203754,
-    "seen": 1793029301.2267866,
-    "ast_hash": "7b11372b9a5be37a1cd28579d01ac83c",
+    "mtime": 1793031498.943471,
+    "seen": 1793031636.3932345,
+    "ast_hash": "f0bf45ee46047b3362bcb519a035eb46",
     "semantic_hash": ""
   },
   "src/components/About.tsx": {
@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   "src/components/Hero.tsx": {
-    "mtime": 1793026470.1797442,
-    "seen": 1793026618.957246,
-    "ast_hash": "75c749bdf8d347d291f8ab4144622020",
+    "mtime": 1793031531.3851974,
+    "seen": 1793031636.3932898,
+    "ast_hash": "e71b61843364574642dbc9547cdac861",
     "semantic_hash": ""
   },
   "src/components/LoadingScreen.tsx": {
@@ -96,15 +96,15 @@
     "semantic_hash": ""
   },
   "src/components/hud/AchievementToast.tsx": {
-    "mtime": 1793025656.086317,
-    "seen": 1793026618.9572983,
-    "ast_hash": "8324961d5cf8bb5692ca290ed03e3cf7",
+    "mtime": 1793031120.1188877,
+    "seen": 1793031636.3933468,
+    "ast_hash": "fab0573295f56c5101794305f915bef7",
     "semantic_hash": ""
   },
   "src/components/hud/Hotbar.tsx": {
-    "mtime": 1793029211.2799864,
-    "seen": 1793029301.2268941,
-    "ast_hash": "fd6111a4839a2ad8fd1bace244dc0fde",
+    "mtime": 1793031110.4736633,
+    "seen": 1793031636.3934004,
+    "ast_hash": "e670a750889632420b9a6e0264eb605b",
     "semantic_hash": ""
   },
   "src/components/hud/HudToggles.tsx": {
@@ -126,9 +126,9 @@
     "semantic_hash": ""
   },
   "src/data/guideScript.ts": {
-    "mtime": 1793029232.910485,
-    "seen": 1793029301.2269263,
-    "ast_hash": "220ff6cfde3dcd3394323084fad2ee6a",
+    "mtime": 1793031125.8180199,
+    "seen": 1793031636.3934395,
+    "ast_hash": "d75788c920d7ad394501a49fb8f30be3",
     "semantic_hash": ""
   },
   "src/data/projects.ts": {
@@ -156,21 +156,21 @@
     "semantic_hash": ""
   },
   "src/game/VoxelWorld.tsx": {
-    "mtime": 1793025656.0873172,
-    "seen": 1793026618.9573953,
-    "ast_hash": "2215296a04bcbe71724cf9ed175c1fe2",
+    "mtime": 1793031653.855951,
+    "seen": 1793031710.8237274,
+    "ast_hash": "12107fff7d85d9a5d2629bb75c32669a",
     "semantic_hash": ""
   },
   "src/game/terrain.ts": {
-    "mtime": 1793025656.0883172,
-    "seen": 1793026618.9574015,
-    "ast_hash": "dbcc62bdbcc4294e7ec8d0316ac58149",
+    "mtime": 1793031612.8740277,
+    "seen": 1793031636.3934958,
+    "ast_hash": "3622b9ce7ab169d1ff254fe191ccec16",
     "semantic_hash": ""
   },
   "src/game/useSound.ts": {
-    "mtime": 1793025656.0883172,
-    "seen": 1793026618.9574082,
-    "ast_hash": "49e2dc7c686d64a05e062694ad7ce503",
+    "mtime": 1793031099.8824172,
+    "seen": 1793031636.393504,
+    "ast_hash": "cec2e309d5e0ae710ea74f1152f61656",
     "semantic_hash": ""
   },
   "src/game/worldState.ts": {
@@ -234,15 +234,15 @@
     "semantic_hash": ""
   },
   "src/pages/SpawnPage.tsx": {
-    "mtime": 1793025656.0903172,
-    "seen": 1793026618.9574773,
-    "ast_hash": "b82f473fecf8d646d9c8130d63ab5769",
+    "mtime": 1793031512.7197793,
+    "seen": 1793031636.3935993,
+    "ast_hash": "127c8924645837516551708f1fe1ce18",
     "semantic_hash": ""
   },
   "src/router.ts": {
-    "mtime": 1793025656.0903172,
-    "seen": 1793026618.9574845,
-    "ast_hash": "0bf56e0ce6c0d63dc17bcfb8e987e35a",
+    "mtime": 1793031105.801555,
+    "seen": 1793031636.3936071,
+    "ast_hash": "df4838baa614a91d6c9da164580ed3e8",
     "semantic_hash": ""
   },
   "tsconfig.app.json": {
@@ -315,6 +315,24 @@
     "mtime": 1793029433.902345,
     "seen": 1793029589.4814,
     "ast_hash": "8aec3cb33368d9a16ab5c4f2a4bbd9d9",
+    "semantic_hash": ""
+  },
+  "src/game/VoxelMinerGame.tsx": {
+    "mtime": 1793031577.1132236,
+    "seen": 1793031636.3934786,
+    "ast_hash": "a4569e9ca658a1b742579db20b054ce0",
+    "semantic_hash": ""
+  },
+  "src/game/voxelMinerTypes.ts": {
+    "mtime": 1793031391.4260745,
+    "seen": 1793031636.3935103,
+    "ast_hash": "994675df52559500529ba656318b7249",
+    "semantic_hash": ""
+  },
+  "src/pages/ArcadePage.tsx": {
+    "mtime": 1793031465.423722,
+    "seen": 1793031636.393558,
+    "ast_hash": "438f618a975b37a627fdb855d5f4b22b",
     "semantic_hash": ""
   }
 }

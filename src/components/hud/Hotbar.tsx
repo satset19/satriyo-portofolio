@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Home, Waypoints, Swords, Sparkles, BookOpen, Mail } from 'lucide-react'
+import { Home, Waypoints, Swords, Sparkles, BookOpen, Mail, Gamepad2 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { PAGES, PAGE_LABELS, goTo, usePage } from '../../router'
 import type { Page } from '../../router'
@@ -10,6 +10,7 @@ const ICONS: Record<Page, LucideIcon> = {
   quests: Swords,
   skills: Sparkles,
   lore: BookOpen,
+  arcade: Gamepad2,
   contact: Mail,
 }
 

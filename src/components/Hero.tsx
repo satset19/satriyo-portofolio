@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { ArrowRight, Mail } from 'lucide-react'
+import { ArrowRight, Mail, Gamepad2 } from 'lucide-react'
 import { goTo } from '../router'
 
 function GithubIcon({ size = 14 }: { size?: number }) {
@@ -98,6 +98,13 @@ export function Hero() {
             className="mc-btn mc-btn-green inline-flex items-center gap-2 px-5 py-3 text-[10px] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-xp"
           >
             View the quests <ArrowRight size={14} aria-hidden />
+          </button>
+          <button
+            type="button"
+            onClick={() => goTo('arcade')}
+            className="mc-btn inline-flex items-center gap-2 px-5 py-3 text-[10px] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-xp"
+          >
+            <Gamepad2 size={14} aria-hidden /> Play Minigame
           </button>
           <a
             href="mailto:laksonosatriyo@gmail.com"

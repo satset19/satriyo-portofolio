@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from 'react'
 
-export const PAGES = ['spawn', 'pipeline', 'quests', 'skills', 'lore', 'contact'] as const
+export const PAGES = ['spawn', 'pipeline', 'quests', 'skills', 'lore', 'arcade', 'contact'] as const
 export type Page = (typeof PAGES)[number]
 
 export const PAGE_LABELS: Record<Page, string> = {
@@ -9,6 +9,7 @@ export const PAGE_LABELS: Record<Page, string> = {
   quests: 'Quests',
   skills: 'Skills',
   lore: 'Lore',
+  arcade: 'Arcade',
   contact: 'Contact',
 }
 

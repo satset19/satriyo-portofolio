@@ -11,6 +11,7 @@ import { PipelinePage } from './pages/PipelinePage'
 import { QuestsPage } from './pages/QuestsPage'
 import { SkillsPage } from './pages/SkillsPage'
 import { LorePage } from './pages/LorePage'
+import { ArcadePage } from './pages/ArcadePage'
 import { ContactPage } from './pages/ContactPage'
 import { PAGE_LABELS, navigate, registerTransition, usePage } from './router'
 import type { Page } from './router'
@@ -23,6 +24,7 @@ const PAGE_COMPONENTS: Record<Page, () => React.JSX.Element> = {
   quests: QuestsPage,
   skills: SkillsPage,
   lore: LorePage,
+  arcade: ArcadePage,
   contact: ContactPage,
 }
 

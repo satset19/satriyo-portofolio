@@ -8,6 +8,7 @@ const ACHIEVEMENTS: Partial<Record<Page, string>> = {
   quests: 'Quest Log Opened',
   skills: 'Skill Tree Unlocked',
   lore: 'Lore Discovered',
+  arcade: 'Arcade Explorer',
   contact: 'Ready to Connect',
 }
 

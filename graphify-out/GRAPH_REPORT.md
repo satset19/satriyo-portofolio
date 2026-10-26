@@ -1,17 +1,17 @@
 # Graph Report - satriyo-portofolio  (2026-10-26)
 
 ## Corpus Check
-- 47 files · ~13,559 words
+- 50 files · ~21,423 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 1, .css 1)
 
 ## Summary
-- 241 nodes · 492 edges · 11 communities (10 shown, 1 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.85)
+- 269 nodes · 586 edges · 12 communities (11 shown, 1 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f59acbe3`
+- Built from commit: `b67de79b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,21 +24,22 @@
 - usePrefersReducedMotion
 - compilerOptions
 - Section
+- useSound.ts
 - .oxlintrc.json
 - React + TypeScript + Vite
 - tsconfig.json
 
 ## God Nodes (most connected - your core abstractions)
-1. `react` - 24 edges
-2. `playClick()` - 21 edges
+1. `react` - 27 edges
+2. `playClick()` - 23 edges
 3. `compilerOptions` - 18 edges
-4. `compilerOptions` - 15 edges
-5. `App()` - 14 edges
-6. `usePrefersReducedMotion()` - 14 edges
-7. `lucide-react` - 13 edges
-8. `Section()` - 10 edges
-9. `HudToggles()` - 8 edges
-10. `GuideCharacter()` - 7 edges
+4. `lucide-react` - 16 edges
+5. `compilerOptions` - 15 edges
+6. `App()` - 14 edges
+7. `usePrefersReducedMotion()` - 14 edges
+8. `Section()` - 12 edges
+9. `VoxelMinerGame()` - 11 edges
+10. `VoxelWorld()` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `App()` --calls--> `HudToggles()`  [EXTRACTED]
@@ -55,7 +56,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (11 total, 1 thin omitted)
+## Communities (12 total, 1 thin omitted)
 
 ### Community 0 - "package.json"
 Cohesion: 0.07
@@ -63,11 +64,11 @@ Nodes (39): dependencies, lucide-react@^1.30.0, react@^19.2.8, react-dom@^19.2.8
 
 ### Community 1 - "VoxelWorld.tsx"
 Cohesion: 0.11
-Nodes (27): HudToggles(), Block, BlockType, generateTerrain(), noise(), smooth(), gestureCtx(), listeners (+19 more)
+Nodes (24): Block, BlockType, generateTerrain(), noise(), OreVein, SKY_ISLAND, smooth(), TORCH_VIEWPOINTS (+16 more)
 
 ### Community 2 - "App.tsx"
-Cohesion: 0.14
-Nodes (25): react, App(), PAGE_COMPONENTS, COLORS, GuideCharacter(), MinerSprite(), SPRITE, GithubIcon() (+17 more)
+Cohesion: 0.13
+Nodes (27): react, App(), PAGE_COMPONENTS, COLORS, GuideCharacter(), MinerSprite(), SPRITE, GithubIcon() (+19 more)
 
 ### Community 3 - "compilerOptions"
 Cohesion: 0.10
@@ -78,16 +79,20 @@ Cohesion: 0.19
 Nodes (18): lucide-react, Contact(), GithubIcon(), Filter, FILTERS, FilterTabs(), FilterTabsProps, ProjectCard() (+10 more)
 
 ### Community 5 - "usePrefersReducedMotion"
-Cohesion: 0.13
-Nodes (21): AgentSimulator(), AgentStatus, PRESETS, SimulatorPreset, TraceStep, ArchitectureFlow(), ArchitectureFlowProps, PULSES (+13 more)
+Cohesion: 0.10
+Nodes (26): AgentSimulator(), AgentStatus, PRESETS, SimulatorPreset, TraceStep, ArchitectureFlow(), ArchitectureFlowProps, PULSES (+18 more)
 
 ### Community 6 - "compilerOptions"
 Cohesion: 0.12
 Nodes (16): compilerOptions, allowImportingTsExtensions, erasableSyntaxOnly, lib, module, moduleDetection, noEmit, noFallthroughCasesInSwitch (+8 more)
 
 ### Community 7 - "Section"
-Cohesion: 0.14
-Nodes (15): About(), Section(), SectionProps, SkillsGrid(), StatItem(), StatsBar(), skillCategories, SkillCategory (+7 more)
+Cohesion: 0.20
+Nodes (10): About(), Section(), SectionProps, SkillsGrid(), skillCategories, SkillCategory, ArcadePage(), LorePage() (+2 more)
+
+### Community 8 - "useSound.ts"
+Cohesion: 0.18
+Nodes (25): HudToggles(), gestureCtx(), listeners, playBreak(), playChime(), playExplosion(), playGameOver(), playGem() (+17 more)
 
 ### Community 9 - ".oxlintrc.json"
 Cohesion: 0.33
@@ -103,17 +108,17 @@ Nodes (3): Expanding the Oxlint configuration, React Compiler, React + TypeScrip
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `App.tsx` to `package.json`, `VoxelWorld.tsx`, `playClick`, `usePrefersReducedMotion`, `Section`?**
-  _High betweenness centrality (0.230) - this node is a cross-community bridge._
+- **Why does `react` connect `App.tsx` to `package.json`, `VoxelWorld.tsx`, `playClick`, `usePrefersReducedMotion`, `Section`, `useSound.ts`?**
+  _High betweenness centrality (0.234) - this node is a cross-community bridge._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.06504065040650407 - nodes in this community are weakly interconnected._
-- **Why does `lucide-react` connect `playClick` to `package.json`, `VoxelWorld.tsx`, `App.tsx`, `usePrefersReducedMotion`?**
-  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+- **Why does `lucide-react` connect `playClick` to `package.json`, `App.tsx`, `usePrefersReducedMotion`, `Section`, `useSound.ts`?**
+  _High betweenness centrality (0.075) - this node is a cross-community bridge._
 - **Should `VoxelWorld.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.10695187165775401 - nodes in this community are weakly interconnected._
-- **Why does `playClick()` connect `playClick` to `VoxelWorld.tsx`, `App.tsx`, `usePrefersReducedMotion`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+  _Cohesion score 0.11494252873563218 - nodes in this community are weakly interconnected._
+- **Why does `playClick()` connect `playClick` to `useSound.ts`, `App.tsx`, `usePrefersReducedMotion`?**
+  _High betweenness centrality (0.040) - this node is a cross-community bridge._
 - **Should `App.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.1380952380952381 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.13360323886639677 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.1 - nodes in this community are weakly interconnected._
